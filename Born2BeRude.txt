@@ -1,0 +1,321 @@
+QUE ES UN CAZZO DE VDI??:
+VirtualBox Disk Image
+
+A QUE SIRVE UN CAZZO DE VDI???:
+Un VirtualBox Disk Image (VDI) es la imagen de un disco duro 
+virtual o el disco lógico asociado con una máquina virtual.
+Se utiliza en entornos de virtualización para crear una réplica del espacio en disco asignado a una o más 
+máquinas virtuales. El VDI captura y almacena toda la información en el disco primario,
+generalmente excluyendo los archivos del sistema operativo y la máquina virtual.
+Esto significa que puedes expandir un archivo de imagen después de que se haya creado,incluso si ya contiene datos.
+Además, el sistema emula discos duros en formato de imagen de disco VDI, permitiendo que una máquina virtual de 
+VirtualBox use discos anteriores creados en Microsoft Virtual PC o VMware, así como su propio formato nativo.
+
+CONTRASEGNA DEL ROOT!!!:
+Iamtherealsonic42
+
+DEL USUARIO DMUSOMEC:
+Yosoyelsonicreal42
+
+DEL ENCRYPT:
+Letmein42
+
+Descripción breve de todos los tipos de particiones:
+
+◦ Primaria: La única partición en la que puede estar instalada un SO. Solo puede haber 4 particiones primarias 
+por disco duro o 3 primarias y una extendida.
+
+◦ Secundario/Extendida: Fue ideada para romper la limitación de 4 particiones primarias en un solo disco físico.
+Solo puede existir una partición de este tipo por disco, y solo sirve para contener particiones lógicas.
+
+◦ Lógica: Ocupa una porción de la partición extendida/primaria o la totalidad de la misma,
+la cual se ha formateado con un tipo específico de sistema de archivos (en nuestro
+caso usaremos ext4) y se le ha asignado una unidad, así el sistema operativo reconoce las particiones lógicas o 
+su sistema de archivos. Puede haber un máximo de 23 particiones lógicas en una partición extendida, sin embargo, 
+Linux, el SO con el que trabajamos actualmente, lo reduce a 15, más que suficientes para realizar este proyecto.
+
+QUE CONCHA ES LVM???:
+Un Logical Volume Manager (LVM) es una tecnología de gestión de dispositivos de almacenamiento que proporciona
+flexibilidad en la administración del espacio de almacenamiento. Utiliza la función device-mapper del kernel de
+Linux para crear un nivel de abstracción sobre el almacenamiento físico, permitiendo la creación de volúmenes
+lógicos que pueden ser más fáciles de agrandar o reducir en comparación con particiones físicas tradicionales.
+Esto ofrece mayor flexibilidad en la gestión del espacio de almacenamiento, permitiendo la creación de volúmenes
+lógicos que pueden extenderse a través de múltiples discos y no necesariamente requerir espacio contiguo.
+
+POR QUE CONCHA QUERRIA USAR LVM???:
+Gestionar con flexibilidad los dispositivos de almacenamiento utilizando un Logical Volume Manager (LVM) ofrece
+varios beneficios, incluyendo:
+
+Flexibilidad en la asignación de espacio: Permite asignar espacio de almacenamiento de manera dinámica, según
+las necesidades del sistema, sin requerir la reorganización física de los discos.
+
+Aumento de capacidad: Facilita la adición de nuevos discos y la expansión de volúmenes lógicos existentes, sin
+afectar la disponibilidad del sistema.
+
+Mejora de la tolerancia a fallos: Permite la creación de volúmenes lógicos que se extienden a través de múltiples
+discos, lo que reduce el riesgo de pérdida de datos en caso de fallo de un disco.
+
+Simplificación de la administración: Reduce la complejidad en la gestión de los dispositivos de almacenamiento,
+ya que los volúmenes lógicos pueden ser gestionados de manera centralizada y sin requerir una profunda
+comprensión de la configuración física de los discos.
+
+Optimización del rendimiento: Permite la creación de volúmenes lógicos que se optimizan para el rendimiento,
+mediante la distribución de los datos en múltiples discos.
+
+Facilidad de migración: Facilita la migración de datos entre diferentes sistemas o configuraciones de
+almacenamiento, sin requerir la reconfiguración de la infraestructura de almacenamiento.
+
+En resumen, la gestión flexible de los dispositivos de almacenamiento con LVM permite a los administradores de
+sistemas optimizar el uso del espacio de almacenamiento, mejorar la tolerancia a fallos y simplificar la
+administración, lo que a su vez reduce el tiempo de inactividad y mejora la eficiencia general del sistema.
+
+QUE CHUCHAS ES UN DEVICE-MAPPER:
+La función device-mapper es un componente del kernel de Linux que permite la creación de dispositivos de
+almacenamiento virtuales, también conocidos como “dispositivos mapeados”. Esta función actúa como una capa de
+abstracción entre los dispositivos de almacenamiento físicos y los sistemas de archivos, permitiendo la creación
+de dispositivos virtuales que pueden ser utilizados por el sistema operativo.
+
+La función device-mapper proporciona las siguientes características:
+
+Mapeo de dispositivos: Permite la creación de dispositivos virtuales que se pueden mapear a dispositivos físicos,
+como discos duros, particiones o volúmenes lógicos.
+
+Transformación de datos: Permite la aplicación de transformaciones a los datos que se escriben o leen desde los
+dispositivos virtuales, como la cifrado, la compresión o la verificación de integridad.
+
+Gestión de volúmenes: Permite la creación y gestión de volúmenes lógicos, que pueden ser utilizados para
+almacenar datos y proporcionar una capa de abstracción adicional sobre los dispositivos de almacenamiento físicos.
+
+Flexibilidad en la configuración: Permite la configuración de los dispositivos virtuales y los volúmenes lógicos
+de manera dinámica, sin requerir la reinicialización del sistema.
+
+En resumen, la función device-mapper es un componente fundamental del kernel de Linux que permite la creación de
+dispositivos de almacenamiento virtuales y la aplicación de transformaciones a los datos, lo que proporciona una
+mayor flexibilidad y seguridad en la gestión de los dispositivos de almacenamiento.
+
+PARA QUE CONCHA DIVIDIMOS EN VOLUMENES??:
+
+1. Root (/)
+La partición root es la partición principal del sistema y contiene el sistema operativo y los archivos de
+configuración.
+Aquí se almacenan los archivos y directorios que son esenciales para el funcionamiento del sistema, como el
+kernel, los drivers, los archivos de configuración y los comandos básicos.
+La partición root debe ser lo suficientemente grande como para contener todos los archivos y directorios
+necesarios para el sistema.
+
+2. Home (/home)
+La partición home es donde se almacenan los archivos y directorios de los usuarios del sistema.
+Cada usuario tiene su propio directorio en /home, donde puede almacenar sus archivos personales, configuraciones
+y datos.
+La partición home puede ser una partición separada para proteger los datos de los usuarios en caso de que el
+sistema tenga problemas.
+
+3. Swap (/swap)
+La partición swap es un área de intercambio de memoria que se utiliza cuando el sistema se queda sin memoria RAM.
+El sistema utiliza la partición swap para almacenar temporalmente datos que no se están utilizando en ese
+momento, lo que permite liberar memoria RAM para otros procesos.
+La partición swap debe ser lo suficientemente grande como para contener al menos el doble de la cantidad de
+memoria RAM del sistema.
+
+4. Tmp (/tmp)
+La partición tmp es un área de almacenamiento temporal donde se almacenan archivos y directorios que se crean y
+se eliminan dinámicamente.
+Los archivos en /tmp se eliminan automáticamente cuando el sistema se reinicia.
+La partición tmp es útil para aplicaciones que necesitan almacenar datos temporalmente, como los archivos de
+caché.
+
+5. Var (/var)
+La partición var es un área de almacenamiento para archivos y directorios que cambian con frecuencia, como los
+archivos de registro, las bases de datos y los archivos de caché.
+La partición var es útil para aplicaciones que necesitan almacenar datos que cambian con frecuencia, como los
+servidores web y los servidores de correo electrónico.
+
+6. Srv (/srv)
+La partición srv es un área de almacenamiento para archivos y directorios que se relacionan con los servicios
+del sistema, como los archivos de configuración y los datos de los servicios.
+La partición srv es útil para aplicaciones que necesitan almacenar datos que se relacionan con los servicios
+del sistema, como los servidores de archivos y los servidores de impresión.
+
+7. Var-log (/var/log)
+La partición var-log es un área de almacenamiento para los archivos de registro del sistema, como los archivos
+de sistema, los archivos de seguridad y los archivos de depuración.
+La partición var-log es útil para aplicaciones que necesitan almacenar archivos de registro, como los servidores
+web y los servidores de correo electrónico.
+
+En resumen, cada una de estas divisiones tiene un propósito específico y ayuda a organizar y gestionar los
+archivos y directorios del sistema de manera eficiente.
+
+🧠 Qué es GID❓ Es el identificador de grupo, es una abreviatura de Group 🆔.
+
+🧠 Qué es SSH❓ Es el nombre de un protocolo y del programa que lo implementa cuya principal función es el acceso remoto a
+un servidor por medio de un canal seguro en el que toda la información está cifrada.
+
+QUE PINGO ES UFW????:
+Uncomplicated Firewall (ufw) es un cortafuegos diseñado para ser de fácil uso desarrollado por Ubuntu. Utiliza la línea de
+comandos para configurar las iptables usando un pequeño número de comandos simples.
+
+Ufw está escrito en python y es un programa para GNU/Linux.
+
+QUE WEA ES UN FIREWALL??????:
+En informática, un cortafuegos (del término original en inglés firewall) es la parte de un sistema informático o una red
+informática que está diseñada para bloquear el acceso no autorizado, permitiendo al mismo tiempo comunicaciones autorizadas.
+
+QUE MIERDA ES UN IPTABLE???:
+iptables es un programa de utilidad de espacio de usuario que permite a un administrador de sistemas configurar el conjunto
+de reglas de filtro de paquetes proporcionadas por el núcleo Linux​ (implementado como diferentes módulos Netfilter). Se
+utilizan diferentes módulos del kernel y programas para protocolos diferentes; iptables se aplica a IPv4, ip6tables a IPv6,
+arptables a ARP, y ebtables a marcos de Ethernet.
+
+🧠 Qué es UFW❓ Es un firewall el cual utiliza la línea de comandos para configurar las iptables usando un pequeño número
+de comandos simples.
+
+QUE CONCHA ES PAM???:
+Linux PAM, or Pluggable Authentication Modules for Linux, is a suite of libraries that allow a Linux system administrator to
+configure methods for authenticating users. It provides a flexible and centralized way to switch authentication methods for
+secured applications by using configuration files instead of changing application code. Linux PAM can authenticate users
+using various methods such as local passwords, LDAP, or fingerprint readers. It separates authentication tasks into four
+independent management groups: account, authentication, password, and session management.
+
+🤔 Que hace cada comando en COMMON-PASSWORD❓
+
+minlen=10 ➤ La cantidad mínima de caracteres que debe contener la contraseña.
+
+ucredit=-1 ➤ Como mínimo debe contener una letra mayúscula. Ponemos el - ya que debe contener como mínimo un carácter,
+si ponemos + nos referimos a como máximo esos caracteres.
+
+dcredit=-1 ➤ Como mínimo debe contener un dígito.
+
+lcredit=-1 ➤ Como mínimo debe contener una letra minúscula.
+
+maxrepeat=3 ➤ No puede tener más de 3 veces seguidas el mismo carácter.
+
+reject_username ➤ No puede contener el nombre del usuario.
+
+difok=7 ➤ Debe tener al menos 7 caracteres que no sean parte de la antigua contraseña.
+
+enforce_for_root ➤ Implementaremos esta política para el usuario root.
+
+🧠 Qué es un script❓ Es una secuencia de comandos guardada en un fichero que cuando se ejecuta
+hará la función de cada comando.
+
+🧠 Qué es crontab? Es un administrador de procesos en segundo plano. Los procesos indicados
+serán ejecutados en el momento que especifiques en el fichero crontab.
+
+Funcionamiento de cada parámetro de crontab:
+
+m ➤ Corresponde al minuto en que se va a ejecutar el script, el valor va de 0 a 59.
+
+h ➤ La hora exacta, se maneja el formato de 24 horas, los valores van de 0 a 23, siendo 0 las 12:00 de la medianoche.
+dom ➤ hace referencia al día del mes, por ejemplo se puede especificar 15 si se quiere ejecutar cada día 15.
+
+dow ➤ Significa el día de la semana, puede ser numérico (0 a 7, donde 0 y 7 son domingo) o las 3 primeras letras
+del día en inglés: mon, tue, wed, thu, fri, sat, sun.
+
+user ➤ Define el usuario que va a ejecutar el comando, puede ser root, u otro usuario diferente siempre y cuando
+tenga permisos de ejecución del script.
+
+command ➤ Refiere al comando o a la ruta absoluta del script a ejecutar.
+
+Qué es una máquina virtual❓
+Es un software que simula un sistema de computación y puede ejecutar programas como si fuese una computadora real.
+Permite crear múltiples entornos simulados o recursos dedicados desde un solo sistema de hardware físico.
+
+Porque has escogido Debian❓
+Esto es algo personal para cada uno, mi opinión: El propio subject explica que es más sencillo hacerlo en Debian y
+si buscas documentación/tutoriales hay muchos y todos se han hecho en Debian.
+
+Debian vs Rocky Linux
+Cuando se compara Debian y Rocky Linux, existen varias diferencias básicas a tener en cuenta:
+
+Compatibilidad con RHEL: Rocky Linux es un clon de Red Hat Enterprise Linux (RHEL) y es binario compatible con RHEL,
+lo que significa que los binarios de RHEL funcionan sin problemas en Rocky Linux. Esto puede ser beneficioso para quienes
+necesitan una alternativa gratuita a RHEL. Debian, por otro lado, tiene una base de usuarios más amplia y diversa, y no es
+binario compatible con RHEL.
+
+Soporte y Comunidad: Debian es un proyecto mantenido por una comunidad de voluntarios y tiene una amplia base de usuarios y
+desarrolladores. Esto proporciona un soporte comunitario robusto y documentación extensa. Rocky Linux, aunque también es un
+proyecto comunitario, se ha desarrollado con el objetivo de ser una alternativa a CentOS, que fue discontinuado por Red Hat.
+Esto significa que Rocky Linux tiene un enfoque más orientado a las necesidades empresariales y cuenta con el apoyo de
+varios sponsors financieramente fuertes.
+
+Seguridad: Rocky Linux integra más estrechamente SELinux, un módulo de seguridad que proporciona controles de acceso de
+seguridad más flexibles y robustos. Debian, por otro lado, utiliza AppArmor como su sistema principal de control de acceso
+obligatorio, que es más fácil de configurar y gestionar, pero puede ser menos flexible y robusto que SELinux.
+
+Manejo de Paquetes: Rocky Linux utiliza yum y su sucesor dnf, que son potentes, flexibles y fáciles de usar, con
+características como resolución automática de dependencias, versionado y contenido modular. Debian, por otro lado, utiliza
+apt, que es confiable y eficiente, pero puede no ofrecer la misma flexibilidad para despliegues de software complejos.
+
+Soporte de Largo Plazo: Rocky Linux ofrece un soporte de largo plazo, regular actualizaciones de seguridad y un ciclo de
+lanzamiento predecible, proporcionando estabilidad y confiabilidad para sistemas críticos. Debian también ofrece soporte de
+largo plazo y actualizaciones de seguridad regulares, pero sus versiones LTS (Long Term Support) tienen un ciclo de vida más
+largo, lo que puede ser una ventaja para los servidores que requieren estabilidad a largo plazo.
+
+Estas diferencias pueden influir en la elección de uno u otro sistema operativo dependiendo de las necesidades específicas
+del usuario o la organización.
+
+Resumen:
+Diferencias básicas entre Rocky y Debian:
+
+Aspecto					Debian					Rocky
+Base					Independiente			RHEL
+Gestor de Paquetes		APT (.deb)				DNF (.rpm)
+Estabilidad				Flexible				Muy estable (empresas)
+Soporte					3-5 años				10 años
+Uso Típico				General					Servidores empresariales
+
+Rocky es una opción robusta y empresarial con soporte a largo plazo.
+Debian es más versátil y comunitario.
+
+Cuál es el propósito de las máquinas virtuales❓
+Su objetivo es el de proporcionar un entorno de ejecución independiente de la plataforma de hardware y del sistema
+operativo, que oculte los detalles de la plataforma subyacente y permita que un programa se ejecute siempre de la misma
+forma sobre cualquier plataforma.
+
+Diferencias entre apt y aptitude ↙️
+Aptitude es una versión mejorada de apt. APT es un administrador de paquetes de nivel inferior y aptitude es un
+administrador de paquetes de alto nivel. Otra gran diferencia es la funcionalidad que ofrecen ambas herramientas. 
+Aptitude ofrece una mejor funcionalidad en comparación con apt-get. Ambos son capaces de proporcionar los medios necesarios
+para realizar la gestión de paquetes. Sin embargo, si se busca un enfoque con más características, debería ser, Aptitude.
+
+Qué es APPArmor❓
+Es un módulo de seguridad del kernel Linux que permite al administrador del sistema restringir lascapacidades de un programa.
+
+Qué es LVM❓
+Es un gestor de volúmenes lógicos. Proporciona un método para asignar espacio en dispositivos de almacenamiento masivo,
+que es más flexible que los esquemas de particionado convencionales para almacenar volúmenes.
+
+🧠 Qué es un script❓ Es una secuencia de comandos guardada en un fichero que cuando se ejecuta hará la función de cada comando.
+
+ACORDATE DE ESTA MIERDA:
+ls /usr/bin/*session
+sudo ufw status
+sudo service ufw status
+sudo service ssh status
+sudo nano /etc/ssh/sshd_config
+sudo nano /etc/ssh/ssh_config
+uname -a
+getent group x
+hostname
+hostname -I
+sudo nano /etc/hostname
+sudo nano /etc/hosts
+sudo adduser name_user
+sudo addgroup evaluating
+sudo adduser name_user evaluating
+nano /etc/sudoers.d/sudo_config
+nano /etc/login.defs
+nano /etc/pam.d/common-password
+sudo chage -l username
+nano /home/user/monitoring.sh
+sudo crontab -u root -e
+lsblk
+dpkg -s sudo
+ls /var/log/sudo/
+cat /var/log/sudo/sudo_config
+dpkg -s ufw
+sudo ufw status numbered
+sudo ufw allow 8080
+sudo ufw delete allow 8080
+sudo /etc/init.d/cron stop
+sudo /etc/init.d/cron start
