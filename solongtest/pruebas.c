@@ -27,17 +27,36 @@ int handle_input(int keysym, t_data *data)
     return (0);
 }
 
+int    dinomove(t_data *data)
+{
+    static int i = 0;
+    static int c = 0;
+    if (c <= 30)
+    {
+        if (i == 30 && c != 30)
+        {
+            i = 0;
+            c++;
+        }
+        mlx_put_image_to_window(data->mlx, data->wind, data->img, i*data->width, c*data->height);
+        i++;
+    }
+    return (0);
+}
+
 int main(void)
 {
     t_data    data;
 
     data.mlx = mlx_init();
     
-    data.img = mlx_xpm_file_to_image(data.mlx, "textures/luffy.xpm", &data.width, &data.height);
-    data.wind = mlx_new_window(data.mlx, 10*data.width, 10*data.height, "huh");
-    mlx_put_image_to_window(data.mlx, data.wind, data.img, 9*data.width, 0);
+    data.img = mlx_xpm_file_to_image(data.mlx, "textures/dino.xpm", &data.width, &data.height);
+    data.wind = mlx_new_window(data.mlx, 30*data.width, 30*data.height, "huh");
+    
 
     mlx_key_hook(data.wind, handle_input, &data);
-    
+    mlx_loop_hook(data.mlx, dinomove, &data);
+   
     mlx_loop(data.mlx);
+    
 }
