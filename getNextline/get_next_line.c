@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-char	*ft_cutit(char *statik)
+char	*ftt_cutit(char *statik)
 {
 	char	*temp;
 	size_t	i;
@@ -25,7 +25,7 @@ char	*ft_cutit(char *statik)
 		i++;
 	if (!statik[i])
 		return (free(statik), NULL);
-	temp = ft_calloc((ft_strlen(statik) - i) + 1, sizeof(char));
+	temp = ftt_calloc((ftt_strlen(statik) - i) + 1, sizeof(char));
 	if (temp == NULL)
 		return (free(statik), NULL);
 	c = 0;
@@ -45,7 +45,7 @@ char	*givememyline(char *statik)
 		i++;
 	if (statik[i] == '\n')
 		i++;
-	line = ft_calloc(i + 1, sizeof(char));
+	line = ftt_calloc(i + 1, sizeof(char));
 	if (!line)
 		return (NULL);
 	c = 0;
@@ -66,16 +66,16 @@ char	*readline(int fd, char *statik)
 	char	*addthis;
 
 	if (!statik)
-		statik = ft_calloc(1, sizeof(char));
-	addthis = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+		statik = ftt_calloc(1, sizeof(char));
+	addthis = ftt_calloc(BUFFER_SIZE + 1, sizeof(char));
 	bread = 1;
-	while (!ft_strchr(statik, '\n') && bread > 0)
+	while (!ftt_strchr(statik, '\n') && bread > 0)
 	{
 		bread = read(fd, addthis, BUFFER_SIZE);
 		if (bread == -1)
 			return (free(statik), free(addthis), NULL);
 		addthis[bread] = '\0';
-		statik = ft_strjoin(statik, addthis);
+		statik = ftt_strjoin(statik, addthis);
 	}
 	if (bread == 0 && statik[0] == '\0')
 		return (free(addthis), free(statik), NULL);
@@ -95,7 +95,7 @@ char	*get_next_line(int fd)
 	line = givememyline(statik);
 	if (!line)
 		return (NULL);
-	statik = ft_cutit(statik);
+	statik = ftt_cutit(statik);
 	return (line);
 }
 

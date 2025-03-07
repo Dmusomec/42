@@ -12,17 +12,17 @@
 
 #include "get_next_line.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ftt_strjoin(char *s1, char *s2)
 {
 	size_t	len;
 	size_t	len2;
 	size_t	c;
 	char	*nueva;
 
-	len = ft_strlen(s1);
-	len2 = ft_strlen(s2);
+	len = ftt_strlen(s1);
+	len2 = ftt_strlen(s2);
 	c = 0;
-	nueva = ft_calloc(len + len2 + 1, 1);
+	nueva = ftt_calloc(len + len2 + 1, 1);
 	if (!nueva)
 		return (NULL);
 	while (s1 && s1[c] != '\0')
@@ -41,7 +41,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (free(s1), nueva - (len + len2));
 }
 
-char	*ft_strchr(const char *origen, int car)
+char	*ftt_strchr(const char *origen, int car)
 {
 	while (*origen != '\0')
 	{
@@ -54,7 +54,7 @@ char	*ft_strchr(const char *origen, int car)
 	return (NULL);
 }
 
-void	*ft_calloc(size_t nmb, size_t size)
+void	*ftt_calloc(size_t nmb, size_t size)
 {
 	unsigned char	*res;
 	size_t			i;
@@ -70,7 +70,7 @@ void	*ft_calloc(size_t nmb, size_t size)
 	return (mem);
 }
 
-size_t	ft_strlen(const char *s)
+size_t	ftt_strlen(const char *s)
 {
 	size_t	c;
 

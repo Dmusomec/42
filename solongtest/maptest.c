@@ -1,8 +1,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
-#include "libft.h"
-#include "ft_printf.h"
+#include "printf/ft_printf.h"
 
 typedef struct s_buffer {
     char    *data;
@@ -11,7 +10,6 @@ typedef struct s_buffer {
 
 //FUNCIONES AUXILIARES
 
-//Verifica extensión .ber usando funciones de libft
 static int  is_ber_file(const char *filename)
 {
     char    *dot;

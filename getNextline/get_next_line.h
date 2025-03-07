@@ -25,13 +25,13 @@
 # include <stdio.h>
 # include <limits.h>
 
-char	*ft_cutit(char *statik);
+char	*ftt_cutit(char *statik);
 char	*givememyline(char *statik);
 char	*readline(int fd, char *statik);
 char	*get_next_line(int fd);
-size_t	ft_strlen(const char *s);
-void	*ft_calloc(size_t nmb, size_t size);
-char	*ft_strchr(const char *origen, int car);
-char	*ft_strjoin(char *s1, char *s2);
+size_t	ftt_strlen(const char *s);
+void	*ftt_calloc(size_t nmb, size_t size);
+char	*ftt_strchr(const char *origen, int car);
+char	*ftt_strjoin(char *s1, char *s2);
 
 #endif
