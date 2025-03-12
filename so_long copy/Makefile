@@ -6,11 +6,11 @@
 #    By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/10 14:38:14 by dmusomec          #+#    #+#              #
-#    Updated: 2025/03/10 17:01:10 by dmusomec         ###   ########.fr        #
+#    Updated: 2025/03/12 15:52:53 by dmusomec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 		= solong.a
+NAME 		= solong
 CC			= cc
 INC			= -I. -I./libft -I./minilibx-linux -lmlx -lX11 -lXext -lm
 CFLAGS		= -Wall -Wextra -g
@@ -28,6 +28,7 @@ all: $(NAME)
 
 $(NAME): $(SRC_OBJ) 
 	$(MAKE) -C $(LIBSPATH)
+	$(MAKE) -C ./minilibx-linux
 	$(CC) $(CFLAGS) $(SRC_OBJ) -L$(LIBSPATH) -lft $(MLIBXFLAGS) -o $(NAME)
 
 clean:

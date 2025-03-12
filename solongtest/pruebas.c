@@ -51,9 +51,8 @@ int main(void)
     data.mlx = mlx_init();
     
     data.img = mlx_xpm_file_to_image(data.mlx, "textures/dino.xpm", &data.width, &data.height);
-    data.wind = mlx_new_window(data.mlx, 30*data.width, 30*data.height, "huh");
+    data.wind = mlx_new_window(data.mlx, 32*data.width, 32*data.height, "huh");
     
-
     mlx_key_hook(data.wind, handle_input, &data);
     mlx_loop_hook(data.mlx, dinomove, &data);
    
