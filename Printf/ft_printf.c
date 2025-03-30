@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 19:21:29 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/01/24 19:50:18 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/03/17 08:26:00 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,38 +67,38 @@ int	ft_printf(const char *str, ...)
 	return (counter);
 }
 
-// int	main()
-// {
-// 	int a = 0;
-//     int printed_chars;
+int	main()
+{
+	int a = 0;
+    int printed_chars;
 
-//     printed_chars = ft_printf("Character: %c\n", 'p');
-//     printf("Printed characters: %d\n", printed_chars);
+    printed_chars = ft_printf("Character: %c\n", 'p');
+    printf("Printed characters: %d\n", printed_chars);
 
-//     printed_chars = ft_printf("String: %s\n", "Hello, World!");
-//     printf("Printed characters: %d\n", printed_chars);
+    printed_chars = ft_printf("String: %s\n", "Hello, World!");
+    printf("Printed characters: %d\n", printed_chars);
 
-//     printed_chars = ft_printf("Pointer: %p %p\n", 0, 0);
-// 	printf("Pointer: %p %p\n", 0, 0);
-//     printf("Printed characters: %d\n", printed_chars);
+    printed_chars = ft_printf("Pointer: %p %p\n", 0, 0);
+	printf("Pointer: %p %p\n", 0, 0);
+    printf("Printed characters: %d\n", printed_chars);
 
-//     printed_chars = ft_printf("Integer: %i\n", 12345);
-//     printf("Printed characters: %d\n", printed_chars);
+    printed_chars = ft_printf("Integer: %i\n", 12345);
+    printf("Printed characters: %d\n", printed_chars);
 
-// 	printed_chars = ft_printf("Unsigned: %u\n", 12345U);
-//     printf("Printed characters: %d\n", printed_chars);
+	printed_chars = ft_printf("Unsigned: %u\n", 12345U);
+    printf("Printed characters: %d\n", printed_chars);
 
-// 	printed_chars = ft_printf("Hex (lowercase): %x\n", 1234567U);
-//     printf("Printed characters: %d\n", printed_chars);
+	printed_chars = ft_printf("Hex (lowercase): %x\n", 1234567U);
+    printf("Printed characters: %d\n", printed_chars);
 
-//     printed_chars = ft_printf("Hex (uppercase): %X\n", 1234567U);
-//     printf("Printed characters: %d\n", printed_chars);
+    printed_chars = ft_printf("Hex (uppercase): %X\n", 1234567U);
+    printf("Printed characters: %d\n", printed_chars);
 
-//     printed_chars = ft_printf("Percentage: %%\n");
-//     printf("Printed characters: %%%%%d\n", printed_chars);
-// 	ft_printf("Printed characters: %%%%%d\n", printed_chars);
-// 	printf("Printed characters: %%%%d\n", printed_chars);
-// 	ft_printf("Printed characters: %%%%d\n", printed_chars);
+    printed_chars = ft_printf("Percentage: %%\n");
+    printf("Printed characters: %%%%%d\n", printed_chars);
+	ft_printf("Printed characters: %%%%%d\n", printed_chars);
+	printf("Printed characters: %%%%d\n", printed_chars);
+	ft_printf("Printed characters: %%%%d\n", printed_chars);
 
-//     return 0;
-// }
+    return 0;
+}

@@ -6,7 +6,7 @@
 #    By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/17 19:33:04 by dmusomec          #+#    #+#              #
-#    Updated: 2025/03/10 15:56:02 by dmusomec         ###   ########.fr        #
+#    Updated: 2025/03/17 08:26:16 by dmusomec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME 		= libftprintf.a
 CC			= cc
 INC			= -I. -I./libft
 LIBFTPATH 	= ./libft
-CFLAGS		= -Wall -Wextra -Werror -g
+CFLAGS		= 
 LIBCMP		= ar rcs
 RM			= rm -f
 SRC 		= ft_printf.c \
