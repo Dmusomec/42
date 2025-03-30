@@ -6,7 +6,7 @@
 #    By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/10 14:38:14 by dmusomec          #+#    #+#              #
-#    Updated: 2025/03/12 15:52:53 by dmusomec         ###   ########.fr        #
+#    Updated: 2025/03/28 17:03:03 by dmusomec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS		= -Wall -Wextra -g
 LIBSPATH	= ./libft
 LIBCMP		= ar rcs
 RM			= rm -f
-SRC 		= map_parse.c \
+SRC 		= tests.c assemble_line.c line_utils.c flood_fill.c gen_utils.c \
 
 SRC_OBJ = $(SRC:.c=.o)
 
