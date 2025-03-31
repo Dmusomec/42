@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 13:22:08 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/03/28 18:53:39 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/03/31 17:36:17 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -406,6 +406,9 @@ int	main(int argc, char **argv)
     validate_path(&game);
 	print_map(&game);
 	print_counts(&game);
+	setadress(&game);
+	mlx_boot(&game);
+	mlx_loop(game.mlx);
 	free_map(&game);
 	close(game.fd);
 	return (0);

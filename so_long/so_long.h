@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 14:24:50 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/03/28 18:32:15 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/03/31 17:37:44 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,16 @@
 # include "minilibx-linux/mlx.h"
 # include "minilibx-linux/mlx_int.h"
 # include "libft/libft.h"
+# include <X11/keysymdef.h>
+# include <X11/keysym.h>
+
+# include <unistd.h>
+# include <string.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <ctype.h>
+# include <errno.h>
 
 typedef struct s_data 
 {
@@ -26,16 +36,19 @@ typedef struct s_data
 	void	*wall;
 	void	*keys;
 	void	*player;
+	void	*exit;
 	char **map;
 	char **map_copy;
 	char *line;
 	int	i;
+	int	counter;
 	int	fd;
 	int	height;
 	int	width;
 	int	x;
 	int	y;
 	int	row;
+	int col;
 	int	exit_count;
 	int	collectible_count;
 	int	player_count;
@@ -57,5 +70,9 @@ void    free_map(t_data *game);
 void    print_error(char *msg, t_data *game);
 void    print_map(t_data *game); //COMENTAR en GEN_UTILS.C
 void	print_counts(t_data *game); //COMENTAR en GEN_UTILS.C
+void    free_textures(t_data *g);
+int setadress(t_data *g);
+int mlx_boot(t_data *g);
+void    image_to_win(t_data *g);
 
 #endif
