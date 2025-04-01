@@ -6,40 +6,48 @@
 #    By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/10 14:38:14 by dmusomec          #+#    #+#              #
-#    Updated: 2025/03/31 17:43:40 by dmusomec         ###   ########.fr        #
+#    Updated: 2025/04/01 13:24:57 by dmusomec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 		= solong
-CC			= cc
-INC			= -I. -I./libft -I./minilibx-linux -lmlx -lX11 -lXext -lm
-CFLAGS		= -Wall -Wextra -g
-LIBSPATH	= ./libft
-LIBCMP		= ar rcs
-RM			= rm -f
-SRC 		= tests.c assemble_line.c line_utils.c flood_fill.c gen_utils.c mlx_utils.c texture_utils.c
+# Compiler and Flags
+CC      = cc
+CFLAGS  = -Wall -Wextra -Werror -g
+MLX_DIR = ./minilibx-linux
+MLX     = $(MLX_DIR)/libmlx.a
+LIBFT   = ./libft/libft.a
 
-SRC_OBJ = $(SRC:.c=.o)
+# Sources and Objects
+SRCS    = tests.c flood_fill.c assemble_line.c gen_utils.c line_utils.c mlx_utils.c texture_utils.c
+OBJS    = $(SRCS:.c=.o)
+NAME    = solong
 
-%.o: %.c
-	$(CC) $(INC) $(CFLAGS) -c $< -o $@
+# Linux-specific MLX flags
+MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
 all: $(NAME)
 
-$(NAME): $(SRC_OBJ) 
-	$(MAKE) -C $(LIBSPATH)
-	$(MAKE) -C ./minilibx-linux
-	$(CC) $(CFLAGS) $(SRC_OBJ) -L$(LIBSPATH) -lft -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT) $(MLX)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
+
+$(LIBFT):
+	make -C ./libft
+
+$(MLX):
+	make -C $(MLX_DIR)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -I./includes -I$(MLX_DIR) -c $< -o $@
 
 clean:
-	$(MAKE) clean -C $(LIBSPATH)
-	$(RM) $(SRC_OBJ)
+	rm -f $(OBJS)
+	make -C ./libft clean
+	make -C $(MLX_DIR) clean
 
 fclean: clean
-	$(MAKE) fclean -C $(LIBSPATH)
-	$(RM) $(NAME)
+	rm -f $(NAME)
+	make -C ./libft fclean
 
 re: fclean all
 
 .PHONY: all clean fclean re
-.SILENT:

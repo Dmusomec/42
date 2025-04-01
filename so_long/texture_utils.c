@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 18:09:58 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/03/31 17:22:46 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/01 21:40:01 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ int setadress(t_data *g)
 
     height = 0;
     width = 0;
-    g->background = mlx_xpm_file_to_image(g->mlx, "./textures/fondo.xpm",
-        &height, &width);
+    g->background = mlx_xpm_file_to_image(g->mlx, "./textures/fondo.xpm", &height, &width);
     if (!g->background)
         return (print_error("failed to upload image", g), free_textures(g), -1);
     g->wall = mlx_xpm_file_to_image(g->mlx, "./textures/wall.xpm",
@@ -62,6 +61,7 @@ void    image_to_win(t_data *g)
 {
     g->i = 0;
     g->row = 0;
+    
     while (g->map[g->i])
     {
         g->counter = 0;
@@ -81,7 +81,7 @@ void    image_to_win(t_data *g)
             g->col += 16;
             g->counter++;
         }
-        g->row += 17;
+        g->row += 16;
         g->i++;
     }
 }

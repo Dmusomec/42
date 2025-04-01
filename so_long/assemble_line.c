@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 16:08:58 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/03/28 18:48:25 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/01 23:01:21 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int get_size(t_data *game)
     if (setlayer(game) == -1)
     {
         free(game->line);
+        
         return (-1);
     }
     game->height++;
