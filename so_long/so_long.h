@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 14:24:50 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/03/31 17:37:44 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/04 17:09:32 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef struct s_data
 	int	fd;
 	int	height;
 	int	width;
+	int	playerx;
+	int playery;
 	int	x;
 	int	y;
 	int	row;

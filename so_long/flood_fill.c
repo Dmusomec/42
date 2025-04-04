@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 16:55:51 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/03/28 18:50:26 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/04 17:09:06 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,11 @@ static void	find_player(t_data *g)
 		g->x = -1;
 		while (++g->x < g->width)
 			if (g->map[g->y][g->x] == 'P')
+			{
+				g->playerx = g->x;
+				g->playery = g->y;
 				return ;
+			}
 	}
 	print_error("Player not found", g);
 }

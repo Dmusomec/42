@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 17:02:39 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/01 21:48:42 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/02 18:49:17 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void    print_map(t_data *game)
 
     ft_printf("Map (Height: %d, Width: %d):\n", game->height, game->width);
     i = 0;
-    while (i <= game->height)
+    while (i < game->height)
     {
         ft_printf("%s\n", game->map[i]);
         i++;

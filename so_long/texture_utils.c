@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 18:09:58 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/01 21:40:01 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/04 16:55:48 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ void    image_to_win(t_data *g)
     g->i = 0;
     g->row = 0;
     
-    while (g->map[g->i])
+    while (g->i < g->height && g->map[g->i])
     {
         g->counter = 0;
         g->col = 0;
-        while (g->map[g->i][g->counter])
+        while (g->counter < g->width && g->map[g->i][g->counter])
         {
             if (g->map[g->i][g->counter] == '0')
                 mlx_put_image_to_window(g->mlx, g->wind, g->background, g->col, g->row);
@@ -81,7 +81,7 @@ void    image_to_win(t_data *g)
             g->col += 16;
             g->counter++;
         }
-        g->row += 16;
+        g->row += 17;
         g->i++;
     }
 }
