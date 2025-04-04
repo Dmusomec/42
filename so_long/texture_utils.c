@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 18:09:58 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/04 16:55:48 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/04 21:42:30 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 void    free_textures(t_data *g)
 {
-    if (!g->background || !g->keys || !g->wall || !g->player || !g->exit)
-        print_error("Texture alloc error", g);
-    if (g->player)
-        mlx_destroy_image(g->mlx, g->player);
-    if (g->background)
-        mlx_destroy_image(g->mlx, g->background);
-    if (g->keys)
-        mlx_destroy_image(g->mlx, g->keys);
-    if (g->wall)
-        mlx_destroy_image(g->mlx, g->wall);
-    if (g->exit)
-        mlx_destroy_image(g->mlx, g->exit);
-    return ;
+    if (g->mlx) 
+    {
+        if (g->player)
+            mlx_destroy_image(g->mlx, g->player);
+        if (g->background)
+            mlx_destroy_image(g->mlx, g->background);
+        if (g->keys)
+            mlx_destroy_image(g->mlx, g->keys);
+        if (g->wall)
+            mlx_destroy_image(g->mlx, g->wall);
+        if (g->exit)
+            mlx_destroy_image(g->mlx, g->exit);
+    }
 }
 
 int setadress(t_data *g)
@@ -38,22 +38,22 @@ int setadress(t_data *g)
     width = 0;
     g->background = mlx_xpm_file_to_image(g->mlx, "./textures/fondo.xpm", &height, &width);
     if (!g->background)
-        return (print_error("failed to upload image", g), free_textures(g), -1);
+        return (print_error("failed to upload image", g), -1);
     g->wall = mlx_xpm_file_to_image(g->mlx, "./textures/wall.xpm",
         &height, &width);
     if (!g->wall)
-        return (print_error("failed to upload image", g), free_textures(g), -1);
+        return (print_error("failed to upload image", g), -1);
     g->player = mlx_xpm_file_to_image(g->mlx, "./textures/player.xpm",
          &height, &width);
     if (!g->player)
-        return (print_error("failed to upload image", g), free_textures(g), -1);
+        return (print_error("failed to upload image", g), -1);
     g->keys = mlx_xpm_file_to_image(g->mlx, "./textures/llave.xpm",
         &height, &width);
     if (!g->keys)
-        return (print_error("failed to upload image", g), free_textures(g), -1);
+        return (print_error("failed to upload image", g), -1);
     g->exit = mlx_xpm_file_to_image(g->mlx, "./textures/exit.xpm", &height, &width);
     if (!g->exit)
-        return (print_error("failed to upload image", g), free_textures(g), -1);
+        return (print_error("failed to upload image", g), -1);
     return (0);
 }
 
@@ -86,3 +86,10 @@ void    image_to_win(t_data *g)
     }
 }
 
+void redraw_game(t_data *g, int newx, int newy)
+{
+    mlx_put_image_to_window(g->mlx, g->wind, g->background, 
+        g->playerx * 16, g->playery * 17);
+    mlx_put_image_to_window(g->mlx, g->wind, g->player, 
+        newx * 16, newy * 17);
+}

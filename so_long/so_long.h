@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 14:24:50 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/04 17:09:32 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/04 21:03:55 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_data
 	char *line;
 	int	i;
 	int	counter;
+	int	move_count;
 	int	fd;
 	int	height;
 	int	width;
@@ -76,5 +77,10 @@ void    free_textures(t_data *g);
 int setadress(t_data *g);
 int mlx_boot(t_data *g);
 void    image_to_win(t_data *g);
+int handle_keypress(int keycode, t_data *g);
+void update_player_position(t_data *g, int newx, int newy);
+int is_valid_move(t_data *g, int newx, int newy);
+void redraw_game(t_data *g, int newx, int newy);
+int ftclose(t_data *g);
 
 #endif

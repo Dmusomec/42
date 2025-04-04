@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 16:55:51 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/04 17:09:06 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/04 21:24:09 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,16 @@ static void	find_player(t_data *g)
 
 static void	free_map_copy(t_data *g)
 {
-	int	i;
+	int i;
 
-	if (g->map_copy)
+    if (g->map_copy) 
 	{
-		i = -1;
-		while (++i < g->height)
-			free(g->map_copy[i]);
-		free(g->map_copy);
-		g->map_copy = NULL;
-	}
+        i = -1;
+        while (++i < g->height)
+            free(g->map_copy[i]);
+        free(g->map_copy);
+        g->map_copy = NULL;
+    }
 }
 
 void	validate_path(t_data *g)
@@ -94,5 +94,5 @@ void	validate_path(t_data *g)
 		print_error("Unreachable collectibles/exit", g);
 	g->collectible_count = orig_c; // Restore original counts
 	g->exit_count = orig_e;
-	free_map_copy(g); // Cleanup
+	free_map_copy(g);
 }
