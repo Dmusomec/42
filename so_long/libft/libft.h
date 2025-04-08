@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 17:44:14 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/03/27 15:21:26 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/08 16:53:26 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,5 @@ size_t	ftt_strlen(const char *s);
 void	*ftt_calloc(size_t nmb, size_t size);
 char	*ftt_strchr(const char *origen, int car);
 char	*ftt_strjoin(char *s1, char *s2);
-void    *ft_realloc(void *ptr, size_t size);
 
 #endif

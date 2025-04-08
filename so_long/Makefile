@@ -6,7 +6,7 @@
 #    By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/10 14:38:14 by dmusomec          #+#    #+#              #
-#    Updated: 2025/04/01 13:24:57 by dmusomec         ###   ########.fr        #
+#    Updated: 2025/04/08 16:50:15 by dmusomec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ MLX     = $(MLX_DIR)/libmlx.a
 LIBFT   = ./libft/libft.a
 
 # Sources and Objects
-SRCS    = tests.c flood_fill.c assemble_line.c gen_utils.c line_utils.c mlx_utils.c texture_utils.c
+SRCS    = main.c flood_fill.c assemble_line.c gen_utils.c line_utils.c mlx_utils.c texture_utils.c
 OBJS    = $(SRCS:.c=.o)
 NAME    = solong
 

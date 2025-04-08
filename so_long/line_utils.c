@@ -6,32 +6,32 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 16:02:02 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/03/28 18:51:51 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/08 18:10:09 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int check_invalid_chars(char *line)
+int	check_invalid_chars(char *line)
 {
-    while (*line)
-    {
-        if (!ft_strchr("01CEP", *line))
-            return (-1);
-        line++;
-    }
-    return (0);
+	while (*line)
+	{
+		if (!ft_strchr("01CEP", *line))
+			return (-1);
+		line++;
+	}
+	return (0);
 }
 
-int is_all_ones(char *line)
+int	is_all_ones(char *line)
 {
-    while (*line)
-    {
-        if (*line != '1')
-            return (0);
-        line++;
-    }
-    return (1);
+	while (*line)
+	{
+		if (*line != '1')
+			return (0);
+		line++;
+	}
+	return (1);
 }
 
 int	validate_first_line(t_data *game, char *line)
@@ -78,5 +78,10 @@ void	count_special_chars(t_data *game, char *line)
 		else if (*line == 'P')
 			game->player_count++;
 		line++;
+	}
+	if (game->exit_count >= 2)
+	{
+		print_error("More than one exit", game);
+		ftclose(game);
 	}
 }
