@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 13:52:15 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/08 17:35:30 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/09 11:18:01 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	update_player_position(t_data *g, int newx, int newy)
 	g->playery = newy;
 	g->map[newy][newx] = 'P';
 	g->move_count++;
+	ft_printf("Moves: %d\n", g->move_count);
 }
 
 int	handle_keypress(int keycode, t_data *g)

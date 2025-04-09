@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 18:09:58 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/08 17:36:34 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/09 11:20:17 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,23 @@ int	setadress(t_data *g)
 {
 	g->heightb = 0;
 	g->widthb = 0;
-	g->background = mlx_xpm_file_to_image(g->mlx, "./textrs/fondo.xpm",
+	g->background = mlx_xpm_file_to_image(g->mlx, "./textures/fondo.xpm",
 			&g->heightb, &g->widthb);
 	if (!g->background)
 		return (print_error("failed to upload image", g), -1);
-	g->wall = mlx_xpm_file_to_image(g->mlx, "./textrs/wall.xpm",
+	g->wall = mlx_xpm_file_to_image(g->mlx, "./textures/wall.xpm",
 			&g->heightb, &g->widthb);
 	if (!g->wall)
 		return (print_error("failed to upload image", g), -1);
-	g->player = mlx_xpm_file_to_image(g->mlx, "./textrs/player.xpm",
+	g->player = mlx_xpm_file_to_image(g->mlx, "./textures/player.xpm",
 			&g->heightb, &g->widthb);
 	if (!g->player)
 		return (print_error("failed to upload image", g), -1);
-	g->keys = mlx_xpm_file_to_image(g->mlx, "./textrs/llave.xpm",
+	g->keys = mlx_xpm_file_to_image(g->mlx, "./textures/llave.xpm",
 			&g->heightb, &g->widthb);
 	if (!g->keys)
 		return (print_error("failed to upload image", g), -1);
-	g->exit = mlx_xpm_file_to_image(g->mlx, "./textrs/exit.xpm",
+	g->exit = mlx_xpm_file_to_image(g->mlx, "./textures/exit.xpm",
 			&g->heightb, &g->widthb);
 	if (!g->exit)
 		return (print_error("failed to upload image", g), -1);
