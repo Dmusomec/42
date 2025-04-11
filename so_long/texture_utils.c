@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 18:09:58 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/09 11:20:17 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/11 20:08:15 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	free_textures(t_data *g)
 
 int	setadress(t_data *g)
 {
+	free_textures(g);
 	g->heightb = 0;
 	g->widthb = 0;
 	g->background = mlx_xpm_file_to_image(g->mlx, "./textures/fondo.xpm",

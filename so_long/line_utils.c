@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 16:02:02 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/08 18:10:09 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/11 21:03:19 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,13 @@ int	validate_length_and_borders(t_data *game, char *line)
 	}
 	if (len != game->width)
 	{
+		free(game->line);
 		print_error("Map is not rectangular", game);
 		return (0);
 	}
 	if (line[0] != '1' || line[game->i] != '1')
 	{
+		free(game->line);
 		print_error("Map borders must be walls (1)", game);
 		return (0);
 	}

@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 16:08:58 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/08 17:18:39 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/11 21:03:53 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,15 @@ int	get_size(t_data *game)
 	if (len > 0 && game->line[len - 1] == '\n')
 		game->line[--len] = '\0';
 	if (check_line(game) == -1)
+	{
+		free(game->line);
+		print_error("Error assembling line", game);
 		return (-1);
+	}
 	if (setlayer(game) == -1)
 	{
 		free(game->line);
+		print_error("Error assembling line", game);
 		return (-1);
 	}
 	game->height++;

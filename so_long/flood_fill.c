@@ -6,11 +6,24 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 16:55:51 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/08 17:00:47 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/11 20:43:51 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	free_map_copy(t_data *g)
+{
+	int	i;
+
+	if (g->map_copy)
+	{
+		i = -1;
+		while (++i < g->height)
+			free(g->map_copy[i]);
+		free(g->map_copy);
+	}
+}
 
 static void	copy_map(t_data *g)
 {
@@ -25,9 +38,7 @@ static void	copy_map(t_data *g)
 		g->map_copy[i] = ft_strdup(g->map[i]);
 		if (!g->map_copy[i])
 		{
-			while (i-- > 0)
-				free(g->map_copy[i]);
-			free(g->map_copy);
+			free_map_copy(g);
 			print_error("Map copy failed", g);
 		}
 	}
@@ -36,7 +47,8 @@ static void	copy_map(t_data *g)
 static void	flood_fill(t_data *g, int x, int y)
 {
 	if (x < 0 || y < 0 || x >= g->width || y >= g->height
-		|| g->map_copy[y][x] == '1' || g->map_copy[y][x] == 'X')
+		|| g->map_copy[y][x] == '1' || g->map_copy[y][x] == 'X'
+		|| (g->map_copy[y][x] == 'E' && g->collectible_count != 0))
 		return ;
 	if (g->map_copy[y][x] == 'C')
 		g->collectible_count--;
@@ -68,20 +80,6 @@ static void	find_player(t_data *g)
 	print_error("Player not found", g);
 }
 
-static void	free_map_copy(t_data *g)
-{
-	int	i;
-
-	if (g->map_copy)
-	{
-		i = -1;
-		while (++i < g->height)
-			free(g->map_copy[i]);
-		free(g->map_copy);
-		g->map_copy = NULL;
-	}
-}
-
 void	validate_path(t_data *g)
 {
 	int	orig_c;
@@ -93,7 +91,10 @@ void	validate_path(t_data *g)
 	find_player(g);
 	flood_fill(g, g->x, g->y);
 	if (g->collectible_count != 0 || g->exit_count != 0)
+	{
 		print_error("Unreachable collectibles/exit", g);
+		free_map_copy(g);
+	}
 	g->collectible_count = orig_c;
 	g->exit_count = orig_e;
 	free_map_copy(g);

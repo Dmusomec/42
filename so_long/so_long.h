@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 14:24:50 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/08 17:35:10 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/11 20:43:59 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ void	update_player_position(t_data *g, int newx, int newy);
 int		is_valid_move(t_data *g, int newx, int newy);
 void	redraw_game(t_data *g, int newx, int newy);
 int		ftclose(t_data *g);
+void	free_map_copy(t_data *g);
 
 #endif

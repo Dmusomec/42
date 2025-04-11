@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 17:02:39 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/08 17:20:33 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/11 21:02:59 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	free_map(t_data *game)
 		free(game->map);
 		game->map = NULL;
 	}
+	free_map_copy(game);
 }
 
 void	print_error(char *msg, t_data *game)
