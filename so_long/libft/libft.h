@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 17:44:14 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/08 16:53:26 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/12 00:47:49 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define BASE16 "0123456789abcdef"
 # define BASE16UPPER "0123456789ABCDEF"
 # define BASE10 "0123456789"
-# define BUFFER_SIZE 20
+# define BUFFER_SIZE 1
 
 void	ft_putstr(char *str, size_t *counter);
 void	ft_putbase(const char *str, unsigned long num, size_t *counter);
