@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 16:02:02 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/11 21:03:19 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/11 21:22:32 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	count_special_chars(t_data *game, char *line)
 	}
 	if (game->exit_count >= 2)
 	{
+		free(game->line);
 		print_error("More than one exit", game);
 		ftclose(game);
 	}
