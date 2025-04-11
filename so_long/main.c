@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:46:02 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/11 20:58:34 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/12 00:58:15 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 {
 	t_data	game;
 
-	game.mlx = NULL;
+	game = (t_data){0};
 	if (argc != 2)
 	{
 		ft_printf("Error\nUsage: ./solong <map_file.ber>\n");
