@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 16:55:51 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/11 20:43:51 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/12 15:48:01 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ void	validate_path(t_data *g)
 	flood_fill(g, g->x, g->y);
 	if (g->collectible_count != 0 || g->exit_count != 0)
 	{
-		print_error("Unreachable collectibles/exit", g);
 		free_map_copy(g);
+		print_error("Unreachable collectibles/exit", g);
 	}
 	g->collectible_count = orig_c;
 	g->exit_count = orig_e;

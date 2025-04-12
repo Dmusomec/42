@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 16:08:58 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/11 21:03:53 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/12 16:00:51 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,17 @@ int	check_line(t_data *game)
 
 	line = game->line;
 	if (check_invalid_chars(line) == -1)
-		print_error("Invalid characters in map", game);
+	{
+		free(game->line);
+		return (print_error("Invalid characters in map", game), -1);
+	}
 	if (!validate_first_line(game, line))
 		return (-1);
 	if (!validate_length_and_borders(game, line))
-		return (-1);
+	{
+		free(game->line);
+		return (print_error("Invalid characters in map", game), -1);
+	}
 	count_special_chars(game, line);
 	return (1);
 }
