@@ -6,7 +6,7 @@
 #    By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/10 15:24:16 by dmusomec          #+#    #+#              #
-#    Updated: 2025/03/27 15:22:08 by dmusomec         ###   ########.fr        #
+#    Updated: 2025/04/14 16:33:13 by dmusomec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strle
 		ft_memmove.c ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c ft_memchr.c ft_strncmp.c \
 		ft_memcmp.c ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c \
 		ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_strnstr.c ft_strchr_str.c \
-		get_next_line.c get_next_line_utils.c ft_printf.c printf_utils.c ft_realloc.c
+		get_next_line.c get_next_line_utils.c ft_printf.c printf_utils.c
 #me crea los files .c como objetos
 OBJS = $(SRCS:.c=.o)
 #comando final para crear efectivamente cada file con "nombre".o
