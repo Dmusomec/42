@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 16:55:51 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/12 15:48:01 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/16 12:24:29 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ static void	flood_fill(t_data *g, int x, int y)
 		return ;
 	if (g->map_copy[y][x] == 'C')
 		g->collectible_count--;
-	if (g->map_copy[y][x] == 'E')
-		g->exit_count--;
 	g->map_copy[y][x] = 'X';
 	flood_fill(g, x + 1, y);
 	flood_fill(g, x - 1, y);
@@ -90,7 +88,7 @@ void	validate_path(t_data *g)
 	copy_map(g);
 	find_player(g);
 	flood_fill(g, g->x, g->y);
-	if (g->collectible_count != 0 || g->exit_count != 0)
+	if (g->collectible_count != 0)
 	{
 		free_map_copy(g);
 		print_error("Unreachable collectibles/exit", g);
