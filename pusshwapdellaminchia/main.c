@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 18:26:28 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/18 19:28:15 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/20 20:06:06 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ char	**prendi(char *str)
 
 int	main(int ac, char **av)
 {
-	if (ac > 1)
+	if (ac == 2)
 	{
-		
+		prendi(av[1]);
 	}
 }
