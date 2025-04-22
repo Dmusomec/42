@@ -6,90 +6,39 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 18:26:28 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/20 20:06:06 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/22 09:03:57 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "push_swap.h"
 
-int	checkdup(char **mat)
+static void	init_stack(t_stack **a, int *indexes, int size)
 {
-	int	i;
-	int	supertemp;
-	int j;
-
-	i = 0;
-	supertemp = 0;
-	j = 0;
-	while (mat[i])
-	{
-		supertemp = ft_atoi(mat[i]);
-		j = i + 1;
-		while (mat[j])
-		{
-			if (ft_atoi(mat[j]) == supertemp)
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-
-int	checkmaxmin(char **mat)
-{
-	int	i;
-
-	i = 0;
-	while (mat[i])
-	{
-		if (ft_atol(mat[i]) > INT_MAX || ft_atol(mat[i]) < INT_MIN)
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int	isvalnum(char **mat)
-{
-	int	i;
-	int	c;
-
-	i = 0;
-	c = 0;
-	while (mat[i])
-	{
-		c = 0;
-		if (mat[i][c] == '-' || mat[i][c] == '+')
-			c++;
-		while (mat[i][c] != '\0' && mat[i][c] >= '0' && mat[i][c] <= '9')
-			c++;
-		if (mat[i][c] != '\0')
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-char	**prendi(char *str)
-{
-	char	**mat;
-
-	mat = ft_split(str, ' ');
-	if (!mat)
-		return (NULL);
-	if (!isvalnum(mat))
-		return (NULL);
-	if (!checkmaxmin(mat))
-		return (NULL);
-	if (!checkdup)
-		return (NULL);
+	while (size--)
+		ft_lstadd_back(a, ft_lstnew(indexes[size]));
 }
 
 int	main(int ac, char **av)
 {
-	if (ac == 2)
-	{
-		prendi(av[1]);
-	}
+	char	**args;
+	int		*nums;
+	int		*indexes;
+	t_stack	*a;
+	t_stack	*b;
+
+	if (ac < 2)
+		return (0);
+	args = parse(ac, av);
+	if (!args)
+		return (ft_putstr_fd("Error\n", 2), 1);
+	nums = convert(args, args_size(args));
+	indexes = normalize(nums, args_size(args));
+	init_stack(&a, indexes, args_size(args));
+	free(nums);
+	free(indexes);
+	if (!is_sorted(a))
+		radix(&a, &b, args_size(args));
+	free_stack(&a);
+	free_mat(args);
+	return (0);
 }

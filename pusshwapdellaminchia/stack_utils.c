@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 21:18:04 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/21 21:38:17 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/22 09:01:14 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,34 @@
 
 void	ra(t_stack **a)
 {
-	t_stack *supertmp;
+	t_stack	*tmp;
 
 	if (!*a || !(*a)->next)
 		return ;
-	supertmp = *a;
+	tmp = *a;
 	*a = (*a)->next;
-	supertmp->next = NULL;
-	ft_lstlast(*a)->next = supertmp;
+	tmp->next = NULL;
+	ft_lstlast(*a)->next = tmp;
 }
 
 void	pb(t_stack **a, t_stack **b)
 {
-	t_stack	*supertemp;
+	t_stack	*tmp;
 
 	if (!*a)
 		return ;
-	supertemp = *a;
+	tmp = *a;
 	*a = (*a)->next;
-	supertemp->next = *b;
-	*b = supertemp;
+	tmp->next = *b;
+	*b = tmp;
 }
 
 void	pa(t_stack **a, t_stack **b)
 {
-	pb (b, a);
+	pb(b, a);
 }
 
-int	sorted(t_stack *stack)
+int	is_sorted(t_stack *stack)
 {
 	while (stack && stack->next)
 	{
@@ -54,12 +54,12 @@ int	sorted(t_stack *stack)
 
 void	free_stack(t_stack **stack)
 {
-	t_stack *supertemp;
+	t_stack	*tmp;
 
 	while (*stack)
 	{
-		supertemp = (*stack)->next;
+		tmp = (*stack)->next;
 		free(*stack);
-		*stack = supertemp;
+		*stack = tmp;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 17:44:14 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/21 21:31:27 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/22 07:46:14 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,6 @@ void	*ftt_calloc(size_t nmb, size_t size);
 char	*ftt_strchr(const char *origen, int car);
 char	*ftt_strjoin(char *s1, char *s2);
 long	ft_atol(const char *str);
+void	ft_swap(int *a, int *b);
 
 #endif
