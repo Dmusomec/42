@@ -6,16 +6,20 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 18:26:28 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/22 09:03:57 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/23 03:25:30 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	init_stack(t_stack **a, int *indexes, int size)
+static void init_stack(t_stack **a, int *indexes, int size)
 {
-	while (size--)
-		ft_lstadd_back(a, ft_lstnew(indexes[size]));
+    int i = 0;
+    while (i < size)
+    {
+        ft_lstadd_back(a, ft_lstnew(indexes[i]));
+        i++;
+    }
 }
 
 int	main(int ac, char **av)

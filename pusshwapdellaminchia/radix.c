@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 21:13:08 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/21 21:17:37 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/23 05:16:58 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,43 @@ static int	get_max_bits(int size)
 	return (bits);
 }
 
-void	radix(t_stack **a, t_stack **b, int size)
+static void	process_bit(t_stack **src, t_stack **dest, int bit, int size)
 {
-	int	max_bits;
-	int	i;
 	int	j;
 
-	max_bits = get_max_bits(size);
-	i = -1;
-	while (++i < max_bits)
+	j = 0;
+	while (j++ < size)
 	{
-		j = -1;
-		while (++j < size)
-		{
-			if (((*a)->content >> i) & 1)
-				ra(a);
-			else
-				pb(a, b);
-		}
-		while (*b)
-			pa(a, b);
+		if (((*src)->content >> bit) & 1)
+			ra(src);    // Keep in src stack if bit is 1
+		else
+			pb(src, dest);  // Push to dest if bit is 0
 	}
+}
+
+void	radix(t_stack **a, t_stack **b, int size)
+{
+	int		max_bits;
+	int		bit;
+	t_stack	**src;
+	t_stack	**dest;
+
+	max_bits = get_max_bits(size);
+	bit = -1;
+	src = a;
+	dest = b;
+	while (++bit < max_bits)
+	{
+		process_bit(src, dest, bit, size);
+		// Switch src/dest for next bit (no need to move back)
+		if (bit < max_bits - 1)
+		{
+			t_stack	**temp = src;
+			src = dest;
+			dest = temp;
+		}
+	}
+	// Ensure all elements end up in A
+	while (*b)
+		pa(a, b);
 }

@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 21:18:04 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/22 09:01:14 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/23 03:18:37 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ra(t_stack **a)
 	*a = (*a)->next;
 	tmp->next = NULL;
 	ft_lstlast(*a)->next = tmp;
+	ft_printf("ra\n");
 }
 
 void	pb(t_stack **a, t_stack **b)
@@ -34,22 +35,24 @@ void	pb(t_stack **a, t_stack **b)
 	*a = (*a)->next;
 	tmp->next = *b;
 	*b = tmp;
+	ft_printf("pb\n");
 }
 
 void	pa(t_stack **a, t_stack **b)
 {
 	pb(b, a);
+	ft_printf("pa\n");
 }
 
-int	is_sorted(t_stack *stack)
+int is_sorted(t_stack *stack)
 {
-	while (stack && stack->next)
-	{
-		if (stack->content > stack->next->content)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
+    while (stack && stack->next)
+    {
+        if (stack->content > stack->next->content)
+            return (0);
+        stack = stack->next;
+    }
+    return (1);
 }
 
 void	free_stack(t_stack **stack)
