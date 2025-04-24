@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 19:51:26 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/23 20:12:15 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:01:57 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_stack	*newlst(int content)
 	new->content = content;
 	new->index = -1;
 	new->next = NULL;
+	return (new);
 }
 
 void	addtotop(t_stack **stack, t_stack *new)

@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 19:51:32 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/23 21:14:30 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:12:08 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ft_free(char **str)
 		i++;
 	while (i >= 0)
 		free(str[i--]);
+	free(str);
 }
 
 int	sorted(t_stack **stack)

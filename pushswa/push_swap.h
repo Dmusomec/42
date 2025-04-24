@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 19:51:43 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/23 21:16:45 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:02:43 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,9 @@ unsigned int	sizeoflist(t_stack *head);
 void	ft_free(char **str);
 int	sorted(t_stack **stack);
 void	freestack(t_stack **stack);
+int	rotatebase(t_stack **stack);
+int	pushbase(t_stack **receive, t_stack **send);
+void    radix(t_stack **a, t_stack **b);
+void	indexer(t_stack **stack);
 
 #endif

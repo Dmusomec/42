@@ -6,20 +6,20 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 19:51:01 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/23 21:17:15 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:16:53 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	startstack(t_stack **stack, char **av)
+void	startstack(t_stack **stack, char *av)
 {
 	t_stack	*new;
 	char	**mat;
 	int	i;
 
 	i = 0;
-	mat = ft_split(av[1], ' ');
+	mat = ft_split(av, ' ');
 	while (mat[i])
 	{
 		new = newlst(ft_atoi(mat[i]));
@@ -69,21 +69,22 @@ int	checkmaxmin(char **args)
 
 int	validateargs(char *arg)
 {
-	long	suptemp;
 	int	i;
 	char **mat;
 
 	i = 0;
-	while (arg[i] != '\0')
+	while (arg[i])
 	{
-		if ((arg[i] == '-' || arg[i] == '+') 
-		&& (arg[i + 1] != '-' || arg[i + 1] != '+'))
-			return (0);
-		while (arg[i] == ' ' || arg[i] == '-' || arg[i] == '+')
+		if (arg[i] == '-' || arg[i] == '+')
+    	{
+			if (i > 0 && arg[i-1] != ' ')
+				return (0);
 			i++;
+		}
+		if (!ft_isdigit(arg[i]))
+			return (0);
 		while (ft_isdigit(arg[i]))
 			i++;
-		return (0);
 	}
 	mat = ft_split(arg, ' ');
 	if (!checkmaxmin(mat))
@@ -103,10 +104,8 @@ int	main(int ac, char **av)
 	{
 		if (!validateargs(av[1]))
 			return (0);
-		a = (t_stack **)malloc(sizeof(t_stack));
-		b = (t_stack **)malloc(sizeof(t_stack));
-		*a = NULL;
-		*b = NULL;
+		a = (t_stack **)malloc(sizeof(t_stack *));
+		b = (t_stack **)malloc(sizeof(t_stack *));
 		startstack(a, av[1]);
 		if (sorted(a))
 		{
@@ -114,6 +113,9 @@ int	main(int ac, char **av)
 			freestack(b);
 			return (0);
 		}
-		
+		radix(a, b);
+		freestack(a);
+		freestack(b);
 	}
+	return (0);
 }
