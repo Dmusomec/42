@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 19:51:17 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/24 18:17:57 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/24 19:07:47 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,23 +58,18 @@ int getmax(t_stack **stack)
 
 void    radix(t_stack **a, t_stack **b)
 {
-    t_stack *a_hed;
     int i;
-    int c;
     int maxbits;
     int size;
 
     i = 0;
-    a_hed = *a;
     maxbits = getmax(a);
     while (i < maxbits)
     {
-		size = sizeoflist(a_hed);
-        c = 0;
-        while (c++ < size)
+		size = sizeoflist(*a);
+        while (size--)
 		{
-			a_hed = *a;
-			if (((a_hed->index >> i) & 1) == 1)
+			if ((((*a)->index >> i) & 1) == 1)
 				ra(a);
 			else
 				pb(a, b);
