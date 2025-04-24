@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 19:51:01 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/24 18:16:53 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:47:45 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,12 @@ int	validateargs(char *arg)
 	i = 0;
 	while (arg[i])
 	{
+		while (arg[i] == ' ')
+			i++;
+		if (!arg[i])
+			break;
 		if (arg[i] == '-' || arg[i] == '+')
-    	{
+		{
 			if (i > 0 && arg[i-1] != ' ')
 				return (0);
 			i++;
@@ -106,6 +110,8 @@ int	main(int ac, char **av)
 			return (0);
 		a = (t_stack **)malloc(sizeof(t_stack *));
 		b = (t_stack **)malloc(sizeof(t_stack *));
+		*a = NULL;
+		*b = NULL;
 		startstack(a, av[1]);
 		if (sorted(a))
 		{
