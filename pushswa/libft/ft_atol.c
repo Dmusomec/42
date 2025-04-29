@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 20:25:20 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/23 21:11:40 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:25:10 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,28 @@
 
 long	ft_atol(const char *str)
 {
-	long	result;
-	int		sign;
+	long	num;
+	int		isneg;
+	int		i;
 
-	result = 0;
-	sign = 0;
-	while ((*str >= '\t' && *str <= '\r') || *str == ' ')
-		str++;
-	if (*str == '-' || *str == '+')
-		sign = *(str++) == '-';
-	while (*str >= '0' && *str <= '9')
+	num = 0;
+	isneg = 1;
+	i = 0;
+	while (str[i] && (str[i] == ' ' || str[i] == '\t'
+			|| str[i] == '\n' || str[i] == '\r'
+			|| str[i] == '\v' || str[i] == '\f'))
+		i++;
+	if (str[i] == '+')
+		i++;
+	else if (str[i] == '-')
 	{
-		if (sign && (result < (LONG_MIN + (*str - '0')) / 10))
-			return (LONG_MIN);
-		else if (!sign && (result > (LONG_MAX - (*str - '0')) / 10))
-			return (LONG_MAX);
-		result = result * 10 + (sign ? -(*str++ - '0') : *str++ - '0');
+		isneg *= -1;
+		i++;
 	}
-	return (result);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		num = (num * 10) + (str[i] - '0');
+		i++;
+	}
+	return (num * isneg);
 }

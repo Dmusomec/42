@@ -6,17 +6,17 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 19:52:20 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/24 18:11:20 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/29 13:37:05 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_stack *getmin(t_stack **stack)
+static t_stack	*getmin(t_stack **stack)
 {
 	t_stack	*supertemp;
-	t_stack *min;
-	int	f;
+	t_stack	*min;
+	int		f;
 
 	supertemp = *stack;
 	min = NULL;
@@ -25,7 +25,8 @@ static t_stack *getmin(t_stack **stack)
 	{
 		while (supertemp)
 		{
-			if ((supertemp->index == -1) && (!f || supertemp->content < min->content))
+			if ((supertemp->index == -1) && (!f
+					|| supertemp->content < min->content))
 			{
 				min = supertemp;
 				f = 1;
@@ -38,8 +39,8 @@ static t_stack *getmin(t_stack **stack)
 
 void	indexer(t_stack **stack)
 {
-	t_stack *supertemp;
-	int	index;
+	t_stack	*supertemp;
+	int		index;
 
 	index = 0;
 	supertemp = getmin(stack);
@@ -68,7 +69,7 @@ void	freestack(t_stack **stack)
 int	rotatebase(t_stack **stack)
 {
 	t_stack	*hed;
-	t_stack *teil;
+	t_stack	*teil;
 
 	if (sizeoflist(*stack) < 2)
 		return (-1);
@@ -83,7 +84,7 @@ int	rotatebase(t_stack **stack)
 int	pushbase(t_stack **receive, t_stack **send)
 {
 	t_stack	*supertemp;
-	t_stack *receive_h;
+	t_stack	*receive_h;
 	t_stack	*send_h;
 
 	if (sizeoflist(*send) == 0)

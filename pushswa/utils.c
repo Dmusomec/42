@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 19:51:32 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/24 18:12:08 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:32:21 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_free(char **str)
 {
 	int	i;
 
+	if (!str)
+		return ;
 	i = 0;
 	while (str[i])
 		i++;
@@ -36,4 +38,24 @@ int	sorted(t_stack **stack)
 		supertemp = supertemp->next;
 	}
 	return (1);
+}
+
+void	startstack(t_stack **stack, char *av)
+{
+	t_stack	*new;
+	char	**mat;
+	int		i;
+
+	i = 0;
+	mat = ft_split(av, ' ');
+	if (!mat)
+		return ;
+	while (mat[i])
+	{
+		new = newlst(ft_atoi(mat[i]));
+		addbottom(stack, new);
+		i++;
+	}
+	indexer(stack);
+	ft_free(mat);
 }

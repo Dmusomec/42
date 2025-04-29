@@ -6,7 +6,7 @@
 /*   By: dmusomec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 19:51:26 by dmusomec          #+#    #+#             */
-/*   Updated: 2025/04/24 18:01:57 by dmusomec         ###   ########.fr       */
+/*   Updated: 2025/04/29 13:33:42 by dmusomec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_stack	*newlst(int content)
 {
-	t_stack *new;
+	t_stack	*new;
 
 	new = (t_stack *)malloc(sizeof(*new));
 	if (!new)
@@ -33,7 +33,7 @@ void	addtotop(t_stack **stack, t_stack *new)
 
 t_stack	*lastnode(t_stack *head)
 {
-	t_stack *supertemp;
+	t_stack	*supertemp;
 
 	supertemp = head;
 	while (supertemp->next)
@@ -61,7 +61,7 @@ void	addbottom(t_stack **stack, t_stack *new)
 unsigned int	sizeoflist(t_stack *head)
 {
 	unsigned int	i;
-	t_stack	*supertemp;
+	t_stack			*supertemp;
 
 	i = 0;
 	supertemp = head;
